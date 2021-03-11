@@ -61,3 +61,25 @@ Methods needed
 
 
 
+this keyword
+_________________
+this - references the *object* that is executing the current function
+
+if the functions is part of an object that function is defined as a method
+
+if that function is a method 
+
+
+
+what objects do I want to have in a tic tac toe game?
+
+a board
+
+player - give player properties
+    player1 is p1
+    player1 has an icon
+    player2 is p2
+
+
+
+
