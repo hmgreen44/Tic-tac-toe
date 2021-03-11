@@ -58,9 +58,6 @@ Methods needed
     check rows? check columns? check diagonals? 
 
 
-
-
-
 this keyword
 _________________
 this - references the *object* that is executing the current function
@@ -71,14 +68,36 @@ if that function is a method
 
 
 
-what objects do I want to have in a tic tac toe game?
+----What objects do I want to have in a tic tac toe game?----
 
-a board
+board
+    board has grid of 9 columns 3 rows
 
 player - give player properties
     player1 is p1
     player1 has an icon
     player2 is p2
+    player2 has an icon
+    player1 has an array value of 1
+    player2 has an array value of 2
+tiles
+    tiles need unique id's 0-8
+    tiles need to know what value is being stored in them 0 = empty 1 = x 2 = O
+
+----What methods do I need to run in the actual tictactoe game?---- 
+(Remember methods are functions that are part of an object)
+tile clickability - store value in tile
+who won? - based on the sum of array win combinations
+
+----What functions would I use outside the scope of my objects?----
+intiialize the game
+manage the states? function playerState()?
+declare winner
+reset board
+reset the game
+
+
+
 
 
 
