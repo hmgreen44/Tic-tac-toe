@@ -73,11 +73,11 @@ class Board {
     }
     resetGame() {
         this.moveCount = 0;
-        this.tileArray 
+        this.tileArray
         //console.log(resetGame);
 
     }
-    
+
     checkWin() {
         //for loop of all of my items in winArrays
         for (let index = 0; index < this.winArrays.length; index++) {
@@ -88,32 +88,46 @@ class Board {
             let index0 = subArray[0]
             let index1 = subArray[1]
             let index2 = subArray[2]
+            //console.log('starting to look at win condition:', subArray)
+            // //console.log(index0, index1, index2)
+            // console.log('tileArray at index0 of subArray:', this.tileArray[index0].symbol)
+            // console.log('tileArray at index1 of subArray:', this.tileArray[index1].symbol)
+            // console.log('tileArray at index2 of subArray:', this.tileArray[index2].symbol)
+            // console.log('Done checking win condition')
+            //if ("X" == this.subArray) {
+            if (this.tileArray[index0].symbol == "X" && this.tileArray[index1].symbol == "X" && this.tileArray[index2].symbol == "X") {
+                this.winner = "X"
 
-            //console.log(index0, index1, index2)
-            console.log(this.tileArray[index0])
+                //console.log("we found a match:", this.tileArray[index0].symbol)
+            }
+            if (this.tileArray[index0].symbol == "O" && this.tileArray[index1].symbol == "O" && this.tileArray[index2].symbol == "O") {
+                this.winner = "O"
+
+               // console.log("we found a match:", this.tileArray[index0].symbol)
+            }
             
-            
-            
-                // if ("X" == this.subArray) {
-                //     this.winner = "X"
-                // }
-                // else {
+            // }
+            // else {
                 //     ("O" == this.subArray);
                 //     this.winner = "O"
                 
-                // }
-                // return winner;
-        }
-        //If tileArray is filled with no winArray then tie. 
-            //Run resetGame function
-
+                // 
+                
+            }
+            if (this.moveCount == 9 && this.winner.length !== 1) {
+                this.winner = "Tie"
+            }
+            //If tileArray is filled with no winArray then tie. 
+        //Run resetGame function
+        console.log(this.winner)
+        return this.winner;
 
 
 
     }
 
 }
-    
+
 
 function init() {
     let tictactoe = new Board()
