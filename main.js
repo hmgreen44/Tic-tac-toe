@@ -17,7 +17,6 @@ class Board {
         //this.tileClick = this.tileClick.bind(this);
         this.tileArray = []; // referencing board object to create tile array
         this.winner = ''
-        this.symbol = ''
         this.moveCount = 0;
         this.winArrays = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
     }
@@ -72,8 +71,8 @@ class Board {
         }
     }
     resetGame() {
-        this.moveCount = 0;
-        this.tileArray
+        //this.moveCount = 0;
+        //this.tileArray
         //console.log(resetGame);
 
     }
@@ -82,7 +81,7 @@ class Board {
         //for loop of all of my items in winArrays
         for (let index = 0; index < this.winArrays.length; index++) {
             //let subArray = winArrays  [0,1,2]
-            const subArray = this.winArrays[index];
+            let subArray = this.winArrays[index];
             //console.log(subArray);
             //one if statement checking subArray indexes in the tileArray
             let index0 = subArray[0]
