@@ -5,9 +5,9 @@ var players = [];
 class Tile {
     constructor(id, tileHTML) {
         this.id = id;
-        this.mark = ''
         this.clicked = false
         this.tileHTML = tileHTML
+        this.symbol = ''
     }
 
 }
@@ -19,6 +19,7 @@ class Board {
         this.winner = ''
         this.symbol = ''
         this.moveCount = 0;
+        this.winArrays = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
     }
     generateBoard() {
 
@@ -30,11 +31,16 @@ class Board {
         header.innerHTML = "TIC-TAC-TOE";
 
         const row = document.createElement("div");
-        row.className = "row p-3";
+        row.className = "row p-4";
+
+        const resetButton = document.createElement("div");
+        resetButton.className = "btn btn-link text-center mt-5 mb-3 ";
+        resetButton.addEventListener('click', this.resetGame.bind(this))
+        resetButton.innerHTML = "Reset Game";
 
         for (let i = 0; i < 9; i++) {
             const col = document.createElement("div");
-            col.className = "col-4 border border-secondary p-4 ";
+            col.className = "col-4 border border-secondary p-5 text-center fs-1";
             col.setAttribute('id', i)
             const tileObject = new Tile(i, col);
             col.addEventListener('click', this.clickTile.bind(this, tileObject));
@@ -42,6 +48,7 @@ class Board {
             this.tileArray.push(tileObject);
 
         }
+        header.appendChild(resetButton);
         container.appendChild(header)
         container.appendChild(row);
         app.appendChild(container);
@@ -51,20 +58,62 @@ class Board {
         if (obj.clicked == false) {
             obj.clicked = true
             if (this.moveCount % 2 == 0) {
-                this.symbol = "O"
-            } else {
                 this.symbol = "X"
+            } else {
+                this.symbol = "O"
             }
-            console.log(this.symbol)
             obj.tileHTML.innerText = this.symbol
-            console.log("whatever", obj)
-            console.log(this.tileArray)
+            obj.symbol = this.symbol
             this.moveCount++;
+            this.checkWin()
+            //console.log(this.symbol)
+            //console.log(this.tileArray)
+            //console.log(this.moveCount)
         }
+    }
+    resetGame() {
+        this.moveCount = 0;
+        this.tileArray 
+        //console.log(resetGame);
+
+    }
+    
+    checkWin() {
+        //for loop of all of my items in winArrays
+        for (let index = 0; index < this.winArrays.length; index++) {
+            //let subArray = winArrays  [0,1,2]
+            const subArray = this.winArrays[index];
+            //console.log(subArray);
+            //one if statement checking subArray indexes in the tileArray
+            let index0 = subArray[0]
+            let index1 = subArray[1]
+            let index2 = subArray[2]
+
+            //console.log(index0, index1, index2)
+            console.log(this.tileArray[index0])
+            
+            
+            
+                // if ("X" == this.subArray) {
+                //     this.winner = "X"
+                // }
+                // else {
+                //     ("O" == this.subArray);
+                //     this.winner = "O"
+                
+                // }
+                // return winner;
+        }
+        //If tileArray is filled with no winArray then tie. 
+            //Run resetGame function
+
+
+
+
     }
 
 }
-
+    
 
 function init() {
     let tictactoe = new Board()
@@ -72,6 +121,8 @@ function init() {
     tictactoe.generateBoard();
 }
 init()
+
+
 
 //init method to call board, players, initializeStates, generateLayout, startGame, generateBoard
 /*Possible reset function added on to the player state to let the game know to reset the board
@@ -96,3 +147,7 @@ resetBoard();
 //how do I fill the blank array from board with player values
 //How do I tell board to display tile with an icon after the value of 0 has been replaced by 1 or 2
 */
+
+   // const tileObject = tileArray[index];
+   // const subArray = winArray[index];
+
